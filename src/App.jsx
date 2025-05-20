@@ -25,12 +25,47 @@ import Footer from "./components/Footer";
 function App() {
   // How to create a React app: npm create vite@latest {app-name} -- --template react
 
+  // notes is the array that keeps track of all the notes.
+  // Its initial state is an empty array
+  const [notes, setNotes] = useState([]);
+
+  // this function get triggered when the "add" button has been clicked
+  function onClickAdd(noteToAdd){
+    // add animation when the 'add' button has been clicked
+    let addBtn = event.target;
+
+    // make the color of the button green once it has been clicked
+    addBtn.style.color = "green";
+
+    // turn the color of the button back to this shade (#f5ba13) of yellow after 0.05 seconds
+    setTimeout(() => {
+      addBtn.stye.color = "#f5ba13";
+    })
+
+    // only add a note to the list if the user actually typed a title and some content (No empty strings for the title or the content fields)
+    if(noteToAdd.title.trim().length > 0 && noteToAdd.content.trim().length > 0){
+      // add the current note to the notes array
+      setNotes((prevNotes) => [...prevNotes, noteToAdd]);
+
+      event.preventDefault();
+    }
+
+  }
+
+  // this function gets triggered when the "delete" icon inside of a note has been clicked
+  function deleteNote(noteId){
+
+  }
   return (
     <>
       <div>
         <Header />
-        <CreateArea />
-        <Note key={1} title="Note title" content="Note content" />
+        <CreateArea onAdd={onClickAdd}/>
+        {/* populate an unordered list with the notes from the notes array */}
+        {notes.map((note, i) => (
+          <Note key={i} title={note.title} content={note.content} onDeleted={deleteNote}/>
+        ))}
+        {/* <Note key={1} title="Note title" content="/Note content" /> */}
         <Footer />
       </div>
     </>
