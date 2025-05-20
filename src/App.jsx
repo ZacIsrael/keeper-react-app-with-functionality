@@ -34,13 +34,13 @@ function App() {
     // add animation when the 'add' button has been clicked
     let addBtn = event.target;
 
-    // make the color of the button green once it has been clicked
-    addBtn.style.color = "green";
+    // make the background color of the button green once it has been clicked
+    addBtn.style.backgroundColor = "green";
 
-    // turn the color of the button back to this shade (#f5ba13) of yellow after 0.05 seconds
+    // turn the background color of the button back to this shade (#f5ba13) of yellow after 0.05 seconds
     setTimeout(() => {
-      addBtn.stye.color = "#f5ba13";
-    })
+      addBtn.style.backgroundColor = "#f5ba13";
+    }, 50);
 
     // only add a note to the list if the user actually typed a title and some content (No empty strings for the title or the content fields)
     if(noteToAdd.title.trim().length > 0 && noteToAdd.content.trim().length > 0){
