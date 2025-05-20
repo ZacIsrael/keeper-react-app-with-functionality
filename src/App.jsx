@@ -65,7 +65,7 @@ function App() {
         <CreateArea onAdd={onClickAdd}/>
         {/* populate an unordered list with the notes from the notes array */}
         {notes.map((note, i) => (
-          <Note key={i} title={note.title} content={note.content} onDeleted={deleteNote}/>
+          <Note key={i} id={i} title={note.title} content={note.content} onDeleted={deleteNote}/>
         ))}
         {/* <Note key={1} title="Note title" content="/Note content" /> */}
         <Footer />
