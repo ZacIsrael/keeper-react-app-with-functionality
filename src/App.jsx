@@ -47,8 +47,10 @@ function App() {
       // add the current note to the notes array
       setNotes((prevNotes) => [...prevNotes, noteToAdd]);
 
-      event.preventDefault();
+      
     }
+
+    event.preventDefault();
 
   }
 
