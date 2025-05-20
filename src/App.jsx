@@ -56,6 +56,16 @@ function App() {
 
   // this function gets triggered when the "delete" icon inside of a note has been clicked
   function deleteNote(noteId){
+    console.log(`Note with id = ${noteId} will be deleted.`);
+    // call setNotes and delete the note with id = noteId from the notes array
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note, i) => {
+        // debugging purposes 
+        console.log("prevNotes.filter(note, i): note = ", note);
+         // return a new array that has all of the notes from the previous array EXCEPT for the one where its index = noteId
+        return i !== noteId;
+      });
+    });
 
   }
   return (
