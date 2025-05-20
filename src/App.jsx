@@ -1,8 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Header from "./components/Header";
+import CreateArea from "./components/CreateArea";
+import Note from "./components/Note";
+import Footer from "./components/Footer";
 
 // CHALLENGE:
 // 1. Implement the add note functionality.
@@ -22,13 +25,16 @@ import './App.css'
 function App() {
   // How to create a React app: npm create vite@latest {app-name} -- --template react
 
-
-
   return (
     <>
-      
+      <div>
+        <Header />
+        <CreateArea />
+        <Note key={1} title="Note title" content="Note content" />
+        <Footer />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
