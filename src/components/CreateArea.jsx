@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+import AddIcon from "@mui/icons-material/Add";
+import { Fab } from "@mui/material";
+import { Zoom } from "@mui/material";
+
 function CreateArea(props) {
   // note keeps track of what the user is typing
   // its default state is an object with 2 properties: title & content
@@ -46,7 +50,7 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input
           value={note.title}
           onChange={handleChangedNote}
@@ -75,7 +79,7 @@ function CreateArea(props) {
             });
           }}
         >
-          Add
+          <AddIcon />
         </button>
       </form>
     </div>
