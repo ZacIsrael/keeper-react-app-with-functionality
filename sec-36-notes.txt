@@ -1,0 +1,164 @@
+﻿Section 36: React
+What is React?
+* React.js is an open-source JavaScript library for building user interfaces (UIs).
+* It was developed by Facebook (now Meta) and released in 2013.
+* React is focused on building UI components — small, reusable pieces that control their own state and behavior.
+* Key Features:
+   * Component-Based Architecture:
+      * UIs are split into independent, reusable pieces called components.
+   * Declarative Syntax: 
+      * You describe what you want the UI to look like, and React updates the DOM efficiently.
+   * Virtual DOM:
+      * React uses a lightweight Virtual DOM to minimize direct manipulation of the real DOM, making updates faster and more efficient.
+   * Unidirectional Data Flow (One-way Binding):
+      *  Data flows from parent to child components through props.
+   * JSX (JavaScript XML):
+      * React uses JSX, a syntax extension that lets you write HTML-like code inside JavaScript.
+* Why should developers use React?
+   * Efficiency: Fast UI updates via Virtual DOM.
+   * Modularity: Break applications into small components.
+   * Flexibility: Works with other libraries or frameworks.
+Strong Community: Tons of packages, tutorials, and job opportunities.
+Introduction to JSX and Babel:
+   * What is JSX?
+   *  a syntax extension for JavaScript that lets developers write HTML-like code directly inside their JavaScript files.
+   * In simple terms:
+   * ✅ JSX looks like HTML, but it's actually JavaScript underneath.
+   * ✅ Browsers can't read JSX directly — Babel (or another compiler) transforms it into regular JavaScript before it runs.
+   * Why do developers use JSX?
+   * Cleaner and easier: Writing what the UI should look like is faster and more readable.
+   * Powerful: JavaScript can be embedded inside JSX using {} curly braces.
+   * Component-friendly: JSX lets developers easily describe the structure of React components.
+   * Essential rules of JSX:
+   * Must have one parent element (wrap multiple elements in a div or a fragment <> </>).
+   * Use camelCase for HTML attributes (like className instead of class, htmlFor instead of for).
+   * Expressions (like variables or function calls) must go inside {}.
+   * What is Babel?
+   * a JavaScript compiler that allows developers to write modern JavaScript (like ES6/ES7/ES8 and beyond) and have it converted ("transpiled") into older JavaScript that web browsers can understand.
+   * In short, the developer writes cutting-edge JavaScript code. → ✅ Babel transforms it into compatible code that can run in all major browsers — even older ones.
+   * Key points about Babel: 
+   * Transpiler, not just a compiler: it mainly translates new syntax to old syntax.
+   * Used heavily with React, because JSX (HTML-like syntax inside JavaScript) is not valid JavaScript without Babel processing it.
+   * Works with plugins and presets — these define what kind of code transformations Babel will perform.
+   * Example: @babel/preset-env helps Babel automatically decide which JavaScript features need to be converted depending on your target browsers.
+Components:
+   * A component in React is a reusable, self-contained piece of UI. Each component returns a React element that describes what should appear on the screen.
+   * Types of components:
+   * Functional Components (Modern & Preferred):
+   * Written as plain JavaScript functions.
+   * Use hooks (e.g., useState, useEffect) to manage state and lifecycle.
+   * Class Components (Older Style):
+   * Use ES6 classes and extend React.Component.
+   * Have lifecycle methods like componentDidMount.
+   * Key features:
+   * Reusable: Can be used multiple times in different parts of the app.
+   * Composable: Components can contain other components (nested).
+   * Encapsulated: Each manages its own state and logic independently.
+   * Props-driven: Receive input data through props (short for “properties”).
+   * Example:
+   * function Greeting(props) {
+   *    return (
+   *      <div>
+   *        <h2>Hello, {props.name}!</h2>
+   *      </div>
+   *    );
+   *  }
+
+
+   * In the code above:
+   * Greeting = component name
+   * props = object parameter holding input data (e.g., name)
+   * return = JSX that renders to the UI
+   * Keynote: Components must start with an uppercase letter (e.g., Welcome, not welcome) or React won't treat them as components.
+Props:
+   * Props (short for properties) are read-only inputs passed from a parent component to a child component in React. 
+   * They allow components to be dynamic, customizable, and reusable.
+   * Purpose of Props:
+   * Pass data from parent to child.
+   * Control component behavior from the outside.
+   * Make components reusable by changing the data they render.
+   * Important Rules:
+   * Props are immutable in the child component. → They cannot be modified inside the child.
+   * They are passed top-down (parent → child only).
+   * If a prop is not passed, its value will be undefined (unless the developer defines defaults).
+   * Why use props?
+   * To avoid hardcoding values.
+   * To customize components across different places in the app.
+   * To follow the DRY principle (Don’t Repeat Yourself).
+State in React - Declarative vs. Imperative Programming:
+   * What is State?
+   * the data or condition of an application at a specific point in time; any variable or structure that holds values that may change over time (e.g., user input, data from a server, whether a form is submitted, etc.).
+   * What is State in React?
+   * In React, state is a built-in feature that lets functional components remember values between renders.
+   * Key points:
+   * It is local to the component.
+   * It can change over time (e.g., after a user clicks a button).
+   * When state changes, React re-renders the component to reflect those changes.
+   * Declarative Programming:
+   * “What to do”
+   * a style of programming where the developer describes what they want to achieve, and not how to do it step by step.
+   * The developer focuses on the outcome of the application, not the process.
+   * The control flow (how things happen) is managed behind the scenes.
+   * Imperative Programming:
+   * “How to do it”
+   * a style of programming where the developer explicitly tells the computer how to do something, step by step.
+   * The developer manually manages control flow (e.g., loops, conditionals, variable updates).
+   * The developer gives more detailed, low-level instructions
+   * Which programming style should developers use when using React?
+   * When using React, developers should take the Declarative approach.
+   * React is a declarative library — developers describe what the UI should look like based on state and props, and React handles DOM updates under the hood. This makes the code:
+   * Easier to read
+   * Easier to maintain
+   * More predictable
+React Hooks:
+   * What are Hooks?
+   * special functions in React that let developers “hook into” React features (like state, lifecycle methods, and context) inside functional components.
+   * Why Hooks were introduced:
+   * Before Hooks, state and side effects could only be used in class components. Hooks make things easier on developers by:
+   * Simplifying component logic
+   * Reducing boilerplate
+   * Encouraging reusability and cleaner code
+   * Most Common React Hooks:
+   * useState(): Adds local state to a functional component
+   * useEffect(): Runs side effects (e.g., API calls, event listeners)
+   * useContext(): Allows you to use React Context value
+   * useRef(): Holds a mutable value that persists without re-rendering
+   * useReducer(): Alternative to useState for complex state logic
+   * useMemo(): Memoizes a computed value to improve performance 
+   * useCallback(): Memoizes a function to avoid unnecessary re-creations
+   * useLayoutEffect(): Similar to useEffect, but this fires synchronously after all DOM changes
+Event Handling in React:
+   * What is Event Handling in React?
+   * the process of responding to user interactions (like clicks, typing, submitting forms, etc.) using JavaScript functions called event handlers. React wraps native DOM events in a synthetic wrapper called SyntheticEvent, which ensures consistent behavior across all browsers.
+   * Event Handler:
+   * a function that gets called in response to a specific user interaction or event — like clicking a button, typing in an input, submitting a form, etc.
+   * a function defined in a component that runs when a specific event prop (like onClick, onChange, or onSubmit) is triggered.
+   * Common Event Types:
+   * Mouse Events:
+   * JSX Prop: onClick
+   * Form Events:
+   * JSX Prop: onChange
+   * Keyboard Events:
+   * JSX Prop: onKeyDown
+   * Focus Events:
+   * JSX Prop: onFocus
+   * Submit Events:
+   * JSX Prop: onSubmit
+React Forms
+   * Controlled Components:
+   * A Controlled Component is an input form element (like <input>, <textarea>, or <select>) whose value is controlled by React state. In other words, React is the "single source of truth" for the value of the input. The input’s value is stored in state, and changes to the input update that state via an event handler.
+   * Why use Controlled components?
+   * They give developers:
+   * Full control over the form data
+   * Ability to validate input values in real-time
+   * Ability to manipulate or format input as it's typed
+   * Easier form submission and reset logic
+   * Key Concepts:
+   * State holds the current value of the input.
+   * The input's value attribute is set from state.
+   * The onChange handler updates the state whenever the user types or changes input.
+   * Key benefits of Controlled Components:
+   * Predictable behavior
+   * Centralized form state
+   * Easier debugging and testing
+   * Smooth integration with form validation libraries
