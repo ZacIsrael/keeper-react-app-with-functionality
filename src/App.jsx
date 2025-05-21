@@ -45,9 +45,7 @@ function App() {
     // only add a note to the list if the user actually typed a title and some content (No empty strings for the title or the content fields)
     if(noteToAdd.title.trim().length > 0 && noteToAdd.content.trim().length > 0){
       // add the current note to the notes array
-      setNotes((prevNotes) => [...prevNotes, noteToAdd]);
-
-      
+      setNotes((prevNotes) => [...prevNotes, noteToAdd]);  
     }
 
     event.preventDefault();

@@ -64,7 +64,8 @@ function CreateArea(props) {
           placeholder="Take a note..."
           rows="3"
         />
-        <button
+        {/* Fab component allows the button to be a different color when the user hovers over it */}
+        <Fab
           onClick={async () => {
             // This anonymous function ensures that the following function
             // only gets called once the "Add" button has been clicked; not when it is rendered.
@@ -79,8 +80,9 @@ function CreateArea(props) {
             });
           }}
         >
+          {/* displays a '+' */}
           <AddIcon />
-        </button>
+        </Fab>
       </form>
     </div>
   );
