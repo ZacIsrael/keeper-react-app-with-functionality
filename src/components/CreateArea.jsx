@@ -12,6 +12,9 @@ function CreateArea(props) {
     content: "",
   });
 
+  // determines whether or not this component (CreateArea) is expanded or not
+  const [isExpanded, setExpanded] = useState(false);
+
   // executes when a change is made to the "title" input or the "content" textarea
   function handleChangedNote(event) {
     // target will either input (title) or textarea (content)
@@ -48,41 +51,58 @@ function CreateArea(props) {
     }
   }
 
+  // triggered when the user clicks the textarea html element
+  function expand() {
+    setExpanded(true);
+  }
+
   return (
     <div>
       <form className="create-note">
-        <input
-          value={note.title}
-          onChange={handleChangedNote}
-          name="title"
-          placeholder="Title"
-        />
+        {/* only show this input html element if isExpanded = true. 
+        It'll be set to true once the user clicks the textarea html element.
+        (See the expand() function.)  */}
+        {isExpanded && (
+          <input
+            value={note.title}
+            onChange={handleChangedNote}
+            name="title"
+            placeholder="Title"
+          />
+        )}
         <textarea
           value={note.content}
+          // only expand the text area to 3 rows once it has been clicked
+          onClick={expand}
           onChange={handleChangedNote}
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          // If isExpanded = true, make this textarea html element 3 rows long.
+          // Otherwise, only make it 1 row long.
+          rows={isExpanded ? 3 : 1}
         />
-        {/* Fab component allows the button to be a different color when the user hovers over it */}
-        <Fab
-          onClick={async () => {
-            // This anonymous function ensures that the following function
-            // only gets called once the "Add" button has been clicked; not when it is rendered.
+        {/* Zoom is a transition component from MUI that animates its child by scaling it in or out. */}
+        <Zoom in={isExpanded}>
+          {/* Fab component allows the button to be a different color when the user hovers over it */}
+          <Fab
+            onClick={async () => {
+              // This anonymous function ensures that the following function
+              // only gets called once the "Add" button has been clicked; not when it is rendered.
 
-            // adds the note (handled in app.js)
-            await props.onAdd(note);
+              // adds the note (handled in app.js)
+              await props.onAdd(note);
 
-            // Clear out the title input and content textarea once the note has been added (to the notes array in app.js)
-            setNote({
-              title: "",
-              content: "",
-            });
-          }}
-        >
-          {/* displays a '+' */}
-          <AddIcon />
-        </Fab>
+              // Clear out the title input and content textarea once the note has been added (to the notes array in app.js)
+              setNote({
+                title: "",
+                content: "",
+              });
+            }}
+          >
+            {/* displays a '+' */}
+            <AddIcon />
+          </Fab>
+        </Zoom>
       </form>
     </div>
   );
